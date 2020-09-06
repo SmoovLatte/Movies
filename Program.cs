@@ -6,11 +6,14 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System.Xml;
 
 namespace Movies
 {
     public class Program
     {
+        //XmlTextReader reader = new XmlTextReader("books.xml");
+
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();

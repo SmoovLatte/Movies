@@ -1,0 +1,58 @@
+﻿@model Movies.Models.ViewModels.MoviesIndexVM[]
+@{
+    ViewBag.Title = "Movies";
+    ViewBag.Header = "Movies";
+}
+@*<partial name="_TimeBox" model="@DateTime.Now" />*@
+<ul>
+    @foreach (var movie in Model)
+    {
+        <li>
+            @movie.Title
+            @*{<b>Has seen</b>}*@
+        </li>
+    }
+</ul>
+<button asp-controller="Movies" asp-action="Create">Add a movie to your list</button>
+<p>
+    <a href="create/" class="button">Add a movie to your list</a>
+    @*<form action="~/Create.cshtml" method="post"><button type="submit">Add a movie to your list</button></form>*@
+</p>
+
+
+<hr />
+
+@*<input type="button" value="Klicka för tiden i HTML" id="btnGetHTML" />
+    <input type="button" value="Klicka för tiden i JSON" id="btnGetJSON" />
+    <div id="divStuff"></div>*@
+
+@section scripts
+{
+    <script>
+        // HTML
+        $("#btnGetHTML").click(function () {
+            // Make AJAX call
+            $.ajax({
+                url: "/timebox",
+                type: "GET",
+                success: function (result) {
+                    // Call done - update DOM
+                    $("#divStuff").html(result);
+                }
+            });
+        });
+
+        // JSON
+        $("#btnGetJSON").click(function () {
+            // Make AJAX call
+            $.ajax({
+                url: "/timebox-data",
+                type: "GET",
+                success: function (result) {
+                    // Call done - update DOM
+                    $("#divStuff").html("<b>" + result.time + "</b>");
+                }
+            });
+        });
+    </script>
+}

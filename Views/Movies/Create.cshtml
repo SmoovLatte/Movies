@@ -1,0 +1,26 @@
+﻿@model Movies.Models.ViewModels.MoviesCreateVM
+@{
+    ViewBag.Title = "Add movie";
+    ViewBag.Header = "Add movie";
+}
+
+@*<partial name="_TimeBox" model="@new DateTime(1975,1,1)" />*@
+<form asp-controller="Movies" asp-action="Create">
+    <label asp-for="Title"></label>
+    <input asp-for="Title" />
+    <span asp-validation-for="Title"></span>
+
+    <label asp-for="Year"></label>
+    <input asp-for="Year" />
+    <span asp-validation-for="Year"></span>
+
+    <br />
+    <input type="submit" value="Create" />
+
+</form>
+
+@section scripts
+{
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"></script>
+}
